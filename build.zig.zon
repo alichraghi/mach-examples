@@ -13,12 +13,13 @@
     },
     .dependencies = .{
         .zigimg = .{
-            .url = "https://github.com/zigimg/zigimg/archive/7f0e5db486df465b1d838112705ac3c1923d18a8.tar.gz",
-            .hash = "12207d0872fdffc8f6755638a7a997f8ac77685df742366e88710e3b7ca0e3756f8b",
+            .url = "https://github.com/zigimg/zigimg/archive/c16565d659526f1943444950b0f5857037ce0c9c.tar.gz",
+            .hash = "122068ede06d793e00d5c15b2f0c8209d284031f9c91eb89805f1b607eadf6c6b3a2",
         },
-        .mach = .{
-            .url = "https://pkg.machengine.org/mach/260802f7771c651246930455dfd7de7a75c9869a.tar.gz",
-            .hash = "1220a2351f6f6f261a9a1f7c17a412acc77bdaa2204daabb0b0dde03f768981a0044",
+        .mach = .{ .path = "../mach" },
+        .mach_opus = .{
+            .url = "https://github.com/alichraghi/mach-opus/archive/e16a850fea2182660594a76508dec2f9cc070081.tar.gz",
+            .hash = "122042c3cc00eac1d19d745163d66cb88e781bc670afe857c83cc48d4cad5bbbae4c",
         },
         .mach_freetype = .{
             .url = "https://pkg.machengine.org/mach-freetype/a6d971285dfe731e49f82e81c81da2b7f5c6a442.tar.gz",

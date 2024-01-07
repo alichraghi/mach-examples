@@ -10,6 +10,7 @@ pub fn build(b: *std.Build) !void {
         assets,
         model3d,
         freetype,
+        opus,
         zigimg,
 
         pub fn moduleDependency(
@@ -34,6 +35,13 @@ pub fn build(b: *std.Build) !void {
                         .optimize = optimize2,
                     }).module("mach-freetype"),
                 },
+                .opus => return std.Build.ModuleDependency{
+                    .name = "opus",
+                    .module = b2.dependency("mach_opus", .{
+                        .target = target2,
+                        .optimize = optimize2,
+                    }).module("mach-opus"),
+                },
                 .zigimg => return std.Build.ModuleDependency{
                     .name = "zigimg",
                     .module = b2.dependency("zigimg", .{
@@ -55,7 +63,7 @@ pub fn build(b: *std.Build) !void {
         std_platform_only: bool = false,
         has_assets: bool = false,
     }{
-        .{ .name = "sysaudio", .deps = &.{} },
+        .{ .name = "sysaudio", .deps = &.{.opus} },
         .{
             .name = "gkurve",
             .deps = &.{ .zigimg, .freetype, .assets },
@@ -108,6 +116,10 @@ pub fn build(b: *std.Build) !void {
                 .optimize = optimize,
             }).artifact("mach-model3d")),
             .freetype => @import("mach_freetype").linkFreetype(b.dependency("mach_freetype", .{
+                .target = target,
+                .optimize = optimize,
+            }).builder, app.compile),
+            .opus => @import("mach_opus").link(b.dependency("mach_opus", .{
                 .target = target,
                 .optimize = optimize,
             }).builder, app.compile),
